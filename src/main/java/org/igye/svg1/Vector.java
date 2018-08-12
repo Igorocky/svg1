@@ -12,6 +12,11 @@ public class Vector {
     private Point start;
     private Point end;
 
+    public Vector(Point start, Point end) {
+        this.start = start;
+        this.end = end;
+    }
+
     public Vector rotate(Double angle) {
         double x = end.getX() - start.getX();
         double y = end.getY() - start.getY();

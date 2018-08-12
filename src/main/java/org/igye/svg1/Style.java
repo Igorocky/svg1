@@ -17,6 +17,8 @@ public class Style {
     private Double strokeWidth;
     @Wither
     private List<Double> strokeDasharray;
+    @Wither
+    private String fill;
 
     @Override
     public String toString() {
@@ -29,6 +31,9 @@ public class Style {
         }
         if (strokeDasharray != null && !strokeDasharray.isEmpty()) {
             sb.append("stroke-dasharray:").append(StringUtils.join(strokeDasharray, ' ')).append(";");
+        }
+        if (fill != null) {
+            sb.append("fill:").append(fill).append(";");
         }
         return sb.toString();
     }

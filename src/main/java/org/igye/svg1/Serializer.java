@@ -33,9 +33,7 @@ public class Serializer {
                         attr("cx", circle.getCenter().getX()),
                         attr("cy", circle.getCenter().getY()),
                         attr("r", circle.getRadius()),
-                        attr("stroke", "green"),
-                        attr("stroke-width", "3"),
-                        attr("fill", "red")
+                        attr("style", circle.getStyle())
                 )
         );
     }

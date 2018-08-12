@@ -1,5 +1,7 @@
 package org.igye.svg1;
 
+import fj.F2;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,6 +9,35 @@ import static java.util.Arrays.asList;
 import static org.igye.svg1.SvgUtils.*;
 
 public class Scenes {
+    public static List<SvgElem> circles(Vector ex, double width, double height, int num,
+                                        F2<Integer, Integer, Double> colRowToRadius) {
+        Vector ey = ex.rotate(ANG_90);
+        double factor = ex.length();
+        double maxDiameter = width / num;
+        double maxRadius = maxDiameter / 2.0;
+        int numV = (int) Math.ceil(height / maxDiameter);
+        List<SvgElem> result = new LinkedList<>();
+        Vector shift = ex.scale(maxDiameter);
+        String color = "green";
+        String white = "white";
+        Style style = Style.builder().stroke(color).strokeWidth(1.0).fill(color).build();
+        for (int r = 0; r < numV; r++) {
+            Vector center = ex.scale(maxRadius).move(ey.scale(maxRadius + r*maxDiameter));
+            for (int c = 0; c < num; c++) {
+                result.add(
+                        Circle.builder()
+                                .center(center.getEnd())
+                                .radius(colRowToRadius.f(c,r)*maxRadius*factor)
+                                .style(style)
+                                .build()
+                );
+                center = center.move(shift);
+            }
+        }
+//        Random rand = new Random();
+        return result;
+    }
+
     public static List<SvgElem> scene1(Vector ex) {
         List<SvgElem> res = new LinkedList<>();
         Vector line1 = ex.scale(10);

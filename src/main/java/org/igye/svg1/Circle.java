@@ -10,7 +10,10 @@ import lombok.experimental.Wither;
 public class Circle implements SvgElem {
     @Wither
     private Point center;
+    @Wither
     private Double radius;
+    @Wither
+    private Style style;
 
     @Override
     public SvgElem flipY(double height) {
