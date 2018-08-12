@@ -7,13 +7,14 @@ import lombok.experimental.Wither;
 
 @Value
 @Builder
-public class Circle implements SvgElem {
+public class Rect implements SvgElem {
     @Wither
-    private Point center;
-    private Double radius;
+    private Point leftTopCorner;
+    private Double width;
+    private Double height;
 
     @Override
     public SvgElem flipY(double height) {
-        return withCenter(center.flipY(height));
+        return withLeftTopCorner(leftTopCorner.flipY(height));
     }
 }

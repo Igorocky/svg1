@@ -57,4 +57,15 @@ public class Vector {
                 .build();
 
     }
+
+    public Vector flipY(double height) {
+        return new Vector(start.flipY(height), end.flipY(height));
+    }
+
+    public double length() {
+        double dx = end.getX() - start.getX();
+        double dy = end.getY() - start.getY();
+        return Math.sqrt(dx*dx + dy*dy);
+    }
+
 }
